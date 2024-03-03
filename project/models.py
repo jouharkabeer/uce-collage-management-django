@@ -44,4 +44,4 @@ class Mark(models.Model):
 
 class Alumnipost(models.Model):
     aid = models.ForeignKey(Alumni, to_field='aid', on_delete=models.CASCADE)
-    link = models.URLField
+    link = models.URLField(null=True)
