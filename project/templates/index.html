@@ -6,61 +6,103 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
   <style>
-    body {
-    color: #000;
-    overflow-x: hidden;
-    height: 100%;
-    background-color: #B0BEC5;
-    background-repeat: no-repeat;
+
+    .contain{
+        display: flex;
+        align-items: center; 
+        justify-content: center; 
+        height: 100vh;
+        background-color: #081414;
     }
 
-    a{
-        text-decoration: none;
-        color: black;
+
+    .cards {
+    display: flex;
+    gap: 3em;
+    align-items: center;
+    justify-content: center;
+    }
+
+    .cards .red {
+    background-color: #f43f5e;
+    }
+
+    .cards .blue {
+    background-color: #3b82f6;
+    }
+
+    .cards .green {
+    background-color: #22c55e;
+    }
+
+    .cards .sky {
+    background-color: #0af5f5;
+    }
+
+    .cards .card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    height: 12em;
+    width: 12em;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    transition: 400ms;
+    }
+
+    .cards .card p.tip {
+    font-size: 1em;
+    font-weight: 700;
+    }
+
+    .cards .card p.second-text {
+    font-size: .7em;
+    }
+
+    .cards .card:hover {
+    transform: scale(1.1, 1.1);
+    }
+
+    .cards:hover > .card:not(:hover) {
+    filter: blur(10px);
+    transform: scale(0.9, 0.9);
     }
 
     a:hover{
         text-decoration: none;
-        color: black;
-    }
-    .card{
-        margin: 1rem;
-        padding: 2rem;
-        align-items: center;
     }
 
-    .align{
-        align-items: center;
-
-    }
-
-
-  </style>
+</style>
 
 </head>
 <body>
-  <div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto row align">
-    <div class="col-lg-3">
-        <div class="card ">
-            <a href="\admin_login\">Admin LOgin</a>  
-        </div>
+    <div class="contain">
+    <div class="cards">
+        <a href="\admin_login">
+            <div class="card red">
+                <p class="tip">Admin Login</p>
+            </div>
+        </a>
+        <a href="\student_login">
+            <div class="card blue">
+                <p class="tip">Student Login</p>
+            </div>
+        </a>
+        <a href="\faculty_login">
+            <div class="card green">
+                <p class="tip">Faculty Login</p>
+            </div>
+        </a>
+        <a href="\alumni_login">
+            <div class="card sky">
+                <p class="tip">Alumni Login</p>
+            </div>
+        </a>
     </div>
-    <div class="col-lg-3">
-        <div class="card">
-            <a href="\student_login\"> Student LOgin</a>
-        </div>
     </div>
-    <div class="col-lg-3">
-        <div class="card">
-            <a href="\faculty_login\"> Faculty LOgin</a>
-        </div>
-    </div>
-    <div class="col-lg-3">
-        <div class="card">
-           <a href="\alumni_login\"> Alumni LOgin</a>
-        </div>
-    </div>
-</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>

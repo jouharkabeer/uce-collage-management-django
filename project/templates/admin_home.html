@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<head>
+    <style>
+
+        .container{
+            display: flex;
+            justify-content: space-between;
+            background-color: rgb(187, 179, 179);
+            height: 100vh;
+            width: 100vw;
+            margin-top: -8px;
+        }
+        .card {
+  box-sizing: border-box;
+  height: 190px;
+  width: 254px;
+  background: rgba(217, 217, 217, 0.58);
+  border: 1px solid white;
+  box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(6px);
+  border-radius: 17px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.5s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  font-weight: bolder;
+  color: black;
+}
+
+.card:hover {
+  border: 1px solid black;
+  transform: scale(1.05);
+}
+
+.card:active {
+  transform: scale(0.95) rotateZ(1.7deg);
+}
+
+        .sidebar{
+            height: 100vh;
+            width: 200px;
+            background-color: #dedeee;
+            padding:  15px 0px 15px 15px;
+            margin-top: -8px;
+            margin-left: -8px;
+            position: fixed;
+            overflow-x: scroll;
+            border-radius: 0 10px 10px 10px;
+            box-shadow: 21px;
+        }
+
+        .content{
+            margin-left: 210px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            padding: 20px;
+            width: calc(100% - 210px);
+        }
+
+
+        .items{
+            font-size: large;
+        }
+
+        .flex{
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .logo{
+            width: 50px;
+            height: auto;
+            align-items: center;
+            object-fit:cover;
+            margin-bottom: 20px;
+            background: transparent;
+        }
+
+        .icon{
+            font-size: 30px;
+            align-items: flex-end;
+        }
+
+        .itemhead{
+            font-size: 25px;
+            padding: 8px;
+            margin-top: 10px;
+            opacity: .5;
+            background-color: rgba(104, 85, 85, 0.664);
+            border-radius: 8px;
+            margin-right: 15px;
+
+            &:hover, &:active{
+                background-color: rgb(16, 85, 85);
+                margin-right: 0px;
+            }
+        }
+
+        .line{
+            width: 100%;
+            height: 2px;
+            background-color: rgba(7, 7, 7, 0.651);
+            margin: 10px 0;
+        }
+
+        a{
+            text-decoration: none;
+            color: black;
+        }
+
+        .submenu{
+            background-color: rgb(101, 240, 240);
+            transform: rotate(100);
+            margin-right: 15px;
+        }
+.active{
+  margin-right: 0;
+  border-radius: 15px 0 0 15px ;
+  background-color: rgb(187, 179, 179);
+}
+
+        .pointer{
+            cursor: pointer;
+        }
+
+        .item{
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+
+
+            &:hover{
+                background-color: rgb(23, 146, 218);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <div class="sidebar">
+        <div class="items">
+            <div class="flex">
+                <!-- <a href="\admin_home"><img src="https://cdn.pixabay.com/photo/2017/03/16/21/18/logo-2150297_640.png" class="logo"/></a> -->
+                <a href="\logout"> <i class="fa-solid fa-right-from-bracket icon"></i></a>
+            </div>
+
+            <div class="line"></div> 
+
+           <a href="\admin_home"> <div class="itemhead active" active>
+                Home
+            </div></a>
+
+            <div class="itemhead" onclick="toggleSubMenu('student')">
+                <div class="flex">
+                    <div>Student</div>
+                    <div><i class="fa-solid fa-caret-down pointer"></i></div>
+                </div>
+            </div>
+            <div class="submenu student" style="display: none;">
+                <a href="\all_student\"><div class="item">All</div></a>
+                <a href="\accepted_student\"><div class="item">Accepted</div></a>
+                <a href="\rejected_student\"><div class="item">Rejected</div></a>
+                <a href="\pending_student\"><div class="item">Pending</div></a>
+            </div>
+
+
+            <div class="itemhead" onclick="toggleSubMenu('faculty')">
+                <div class="flex">
+                    <div>Faculty</div>
+                    <div><i class="fa-solid fa-caret-down pointer"></i></div>
+                </div>
+            </div>
+            <div class="submenu faculty" style="display: none;">
+                <a href="\all_faculty\"><div class="item">All</div></a>
+                <a href="\accepted_faculty\"><div class="item">Accepted</div></a>
+                <a href="\rejected_faculty\"><div class="item">Rejected</div></a>
+                <a href="\pending_faculty\"><div class="item">Pending</div></a>
+            </div>
+
+            <div class="itemhead" onclick="toggleSubMenu('alumni')">
+                <div class="flex">
+                    <div>Alumni</div>
+                    <div><i class="fa-solid fa-caret-down pointer"></i></div>
+                </div>
+            </div>
+            <div class="submenu alumni" style="display: none;">
+                <a href="\all_alumni\"><div class="item">All</div></a>
+                <a href="\accepted_alumni\"><div class="item">Accepted</div></a>
+                <a href="\rejected_alumni\"><div class="item">Rejected</div></a>
+                <a href="\pending_alumni\"><div class="item">Pending</div></a>
+        </div></div>
+    </div>
+<div class="content">
+    <div class="card">
+        Students
+      </div>
+      <div class="card">
+        Facultys
+      </div>
+      <div class="card">
+        Alumnies
+      </div>
+
+</div>
+</div>
+<script>
+    function toggleSubMenu(subMenuClass) {
+        var subMenu = document.querySelector('.' + subMenuClass);
+        if (subMenu.style.display === 'none') {
+            subMenu.style.display = 'block';
+        } else {
+            subMenu.style.display = 'none';
+        }
+    }
+</script>
+<script src="https://kit.fontawesome.com/920c089101.js" crossorigin="anonymous"></script>
+
+</body>
+
+                

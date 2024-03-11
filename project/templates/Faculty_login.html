@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+    {% load static %}
+    {% if error %}
+  <script>
+
+  alert("Invalid Login Credentials. Try Again ! ");
+
+  </script>
+  {% endif %}
+
   <title>UCE_MANAGEMENT</title>
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -196,6 +206,8 @@ a {
                     <div class="row px-3 mb-4">
                         <div class="line"></div>
                     </div>
+                    <form method="POST">
+                        {% csrf_token %}
                     <div class="row px-3">
                         <label class="mb-1"><h6 class="mb-0 text-sm">Email Address</h6></label>
                         <input class="mb-4" type="text" name="email" placeholder="Enter a valid email address">
@@ -204,17 +216,10 @@ a {
                         <label class="mb-1"><h6 class="mb-0 text-sm">Password</h6></label>
                         <input type="password" name="password" placeholder="Enter password">
                     </div>
-                    <div class="row px-3 mb-4">
-                        <div class="custom-control custom-checkbox custom-control-inline">
-                            <input id="chk1" type="checkbox" name="chk" class="custom-control-input"> 
-                        </div>
-                    </div>
                     <div class="row mb-3 px-3">
                         <button type="submit" class="btn btn-blue text-center">Login</button>
                     </div>
-                    <div class="row mb-4 px-3">
-                        <small class="font-weight-bold">Don't have an account? <a class="text-danger ">Register</a></small>
-                    </div>
+                </form>
 
                     <div class="row px-3 mb-4">
                       <div class="line"></div>
