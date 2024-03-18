@@ -123,7 +123,7 @@ USE_L10N = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "project/static")
+    os.path.join(BASE_DIR, )
 ]
 
 # Default primary key field type

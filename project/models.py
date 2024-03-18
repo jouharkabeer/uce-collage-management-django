@@ -3,20 +3,33 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-
 class Student(models.Model):
-    sid = models.AutoField(primary_key=True)
-    name = models.ForeignKey(User, on_delete=models.CASCADE)
-    phone = models.CharField(max_length=10)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    phone = models.IntegerField()
     image = models.ImageField(upload_to="")
     gender = models.CharField(max_length=10)
     semester = models.CharField(max_length=15)
-    aadhaar_number = models.CharField(max_length=16,blank=True,null=True)
-    status = models.CharField(max_length=20,null=True,blank=True)
+    aadhaar_number = models.CharField(max_length=16, blank=True, null=True)
+    status = models.CharField(max_length=20, null=True, blank=True)
+    type = models.CharField(max_length=15, null=True)
     
+    def __str__(self):
+        return self.user.get_full_name()
+
+class Mark(models.Model):
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+    sub1 = models.IntegerField(null=True)
+    sub2 = models.IntegerField(null=True)
+    sub3 = models.IntegerField(null=True)
+    sub4 = models.IntegerField(null=True)
+    sub5 = models.IntegerField(null=True)
+    attendance = models.FloatField(null=True)
 
     def __str__(self):
-        return self.user.first_name
+        return f"Mark for Student: {self.student.user.get_full_name()}"
+
+
+
     
 class Alumni(models.Model):
     aid = models.AutoField(primary_key=True)
@@ -32,15 +45,6 @@ class Faculty(models.Model):
     Department = models.CharField(max_length=15)
     image = models.ImageField(upload_to="")
 
-
-class Mark(models.Model):
-    sid = models.ForeignKey(Student, to_field='sid', on_delete=models.CASCADE)
-    sub1 = models.IntegerField(null=True)
-    sub2 = models.IntegerField(null=True)
-    sub3 = models.IntegerField(null=True)
-    sub4 = models.IntegerField(null=True)
-    sub5 = models.IntegerField(null=True)
-    attendence = models.FloatField
 
 class Alumnipost(models.Model):
     aid = models.ForeignKey(Alumni, to_field='aid', on_delete=models.CASCADE)

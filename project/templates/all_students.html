@@ -1,0 +1,42 @@
+
+
+{% block title %} All Students {% endblock %}
+{% block view_students %} active {% endblock %}
+{% block css %}
+{% endblock %}
+{% block body %}
+<div class="container mt-4">
+<table class="table table-hover" id="example">
+    <thead>
+        <tr>
+            <th>Sr.No</th>
+            <th>Full Name</th>
+            <th>Email Id</th>
+            <th>Contact</th>
+            <th>Aadhar ID</th>
+            <th>Gender</th>
+            <th>Change Status</th>
+            <th>Status</th>
+            <th>Image</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for student in students %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{student.user.get_full_name}}</td>
+            <td>{{student.user.email}}</td>
+            <td>{{student.phone}}</td>
+            <td>{{student.aadhaar_number}}</td>
+            <td>{{student.gender}}</td>
+            <td>{{student.status}}</td>
+            <td><a href="/change_status_profectional/{{student.sid}}/" class="btn btn-secondary">Change Status</a></td>
+            <td><img src="{{student.image.url}}" class="rounded-circle" width="90px" height="70px"></td>
+            <td><a href="/delete_user/{{student.user.id}}/" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this student?')">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endblock %}
